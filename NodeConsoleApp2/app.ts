@@ -108,7 +108,7 @@ const longitudNombresChico: number[] = nombres02.map(nombre => nombre.length);
 console.log(`la longitud de los nombres de chicas son : ${longitudNombresChica}`);
 console.log(`la longitud de los nombres de chicos son : ${longitudNombresChico}`);
 
-// 
+// borrar ultimo
 
 function borrarUltimoChica() {
     return nombres01.pop();
@@ -118,3 +118,46 @@ var element = nombres01.pop();
 console.log(`nombres chico separado por comas :  ${juntaComasChicos}`);
 console.log(`nombres chica separado por comas :  ${juntaComasChicas}`);
 console.log("element is : " + element);  
+
+// añadir Jacinto a los ARRAYs
+const nombresNuevo = nombres01;
+console.log("Antes de sumar Jacinto, la lista es: " + nombresNuevo);
+
+nombres01[nombres01.length] = "Jacinto";
+console.log("nuevo nombre es : " + nombres01);
+
+let sumaNombre = nombres02.push("Jacinto");
+console.log("element is : " + nombres02); 
+
+// 10  hacer un running total, sumando los valores 
+
+//const longitudNombresChica: number[] = nombres01.map(nombre => nombre.length);
+//const longitudNombresChico: number[] = nombres02.map(nombre => nombre.length);
+
+console.log(`la longitud de los nombres de chicas son : ${longitudNombresChica}`);
+console.log(`la longitud de los nombres de chicos son : ${longitudNombresChico}`);
+//////
+
+let miConjunto = new Set<string>();
+miConjunto.add("pepe");
+miConjunto.add("juan");
+
+miConjunto.add("pepe");
+miConjunto.add("ana");
+miConjunto.forEach(imprimeNombre);
+
+let valorNuevo: string = "ana";
+if (miConjunto.has(valorNuevo)) {
+    console.log("elemento repetido");
+}
+else {
+    miConjunto.add(valorNuevo);
+} for (let valor of miConjunto) {
+    console.log(valor);
+}
+miConjunto.delete("pepe");
+
+console.log("tamano cadena " + miConjunto.size);
+miConjunto.add("pepe");
+console.log("tamano cadena " + miConjunto.size);
+/*miConjunto.clear();*/
