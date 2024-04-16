@@ -1,36 +1,64 @@
 "use strict";
+var _a;
 let misAstronautas = new Set();
-let nombreAstronautaInput = document.getElementById("nombreAstronauta");
+let Diccionario = new Map();
+let listaFallos = 0;
+let nombreAstronautaInput = (_a = document.getElementById("nombreAstronauta")) === null || _a === void 0 ? void 0 : _a.value;
 let boton = document.getElementById("boton");
 boton.addEventListener("click", mostrar, false);
-let listaFallos = 0;
-function mostrar() {
-    // Obtener el valor del input
-    let nombreAstronauta = nombreAstronautaInput.value;
-    // Verificar si el nombre ya est� en el set
-    if (misAstronautas.has(nombreAstronauta)) {
+//document.getElementById("boton")?.addEventListener("click", mostrar, false);
+//document.getElementById("boton")?.addEventListener("click", ()=> alert("Adios"));
+function mostrarDiccionario() {
+    let texto = nombreAstronautaInput;
+    if (Diccionario.has(texto)) {
+        //let valor = Diccionario.get(texto) + 1;
+        //Diccionario.set(texto, valor);
+        /*        Diccionario.get(texto);*/
+        //map.set(nombreAstronauta, (map.get(nombreAstronauta) + 1);
         alert("Nombre repetido");
         listaFallos++;
     }
     else {
-        // Crear un nuevo elemento li
-        //let nuevoLi = document.createElement("li");
-        //// Asignar el valor del input como texto del li
+        Diccionario.set(texto, 1);
+        addEtiqueta(texto);
+        //let nuevoLi = (<HTMLElement>document.createElement("li"));
         //nuevoLi.textContent = nombreAstronauta;
-        //// Agregar el li al ul
-        //let resultadoUl = <HTMLInputElement>document.getElementById("resultado");
-        //resultadoUl.appendChild(nuevoLi);
-        // Agregar el nombre al set
-        misAstronautas.add(nombreAstronauta);
-        document.writeln(misAstronautas.toString());
+        //(<HTMLElement>document.getElementById("resultado")).appendChild(nuevoLi);
+        //    misAstronautas.add(texto);
     }
-    // Mostrar los nombres en consola
-    for (let valor of misAstronautas) {
-        console.log(valor);
-    }
+    let porcentaje = ((listaFallos * 100) / (misAstronautas.size + listaFallos));
+    let muestraRepeciciones = `<p> Duplicados son un ${porcentaje} % de los intentos</p>`;
+    document.getElementById("repeticiones").innerHTML = muestraRepeciciones;
 }
+function mostrar() {
+    let texto = nombreAstronautaInput;
+    if (misAstronautas.has(texto)) {
+        let misAstronautasFallo = new Map();
+        //map.set(nombreAstronauta, (map.get(nombreAstronauta) + 1);
+        alert("Nombre repetido");
+        listaFallos++;
+    }
+    else {
+        addEtiqueta(texto);
+        //let nuevoLi = (<HTMLElement>document.createElement("li"));
+        //nuevoLi.textContent = nombreAstronauta;
+        //(<HTMLElement>document.getElementById("resultado")).appendChild(nuevoLi);
+        misAstronautas.add(texto);
+    }
+    let porcentaje = ((listaFallos * 100) / (misAstronautas.size + listaFallos));
+    let muestraRepeciciones = `<p> Duplicados son un ${porcentaje} % de los intentos</p>`;
+    document.getElementById("repeticiones").innerHTML = muestraRepeciciones;
+}
+function addEtiqueta(nombreAstronauta) {
+    let elementoli = document.createElement("li");
+    elementoli.textContent = nombreAstronauta;
+    let lista = document.getElementById("lista");
+    lista.appendChild(elementoli);
+}
+/*let nuevoAstronauta = document.getElementById("astronautaNombre");*/
+//let astronautasJunticos = misAstronautas.join(", ");
+//alert(`nombres de astronautas por comas :  ${astronautasJunticos}`);
 //let repetido = document.getElementById("repeticiones");
 //let lista = document.getElementById("lista");
 //let resultado = document.getElementById("resultado");
-let nuevoAstronauta = document.getElementById("astronautaNombre");
 //# sourceMappingURL=astronautaListados.js.map
